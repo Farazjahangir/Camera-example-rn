@@ -32,6 +32,11 @@ export default class App extends Component {
     const { hasCameraPermission } = this.state;
       return (
         <View style={{ flex: 1 }}>
+          {!hasCameraPermission && 
+            <View style={{flex: 1, alignItems: 'center' , justifyContent: 'center'}}>
+              <Text style={{fontSize: 18}}>No Access To Camera</Text>
+            </View>
+          }
           {!this.state.isCamera && 
           <TouchableOpacity 
             style={{flex: 0.3, alignItems: 'center' , justifyContent: 'center'}}
@@ -81,7 +86,7 @@ export default class App extends Component {
               </View>
             </Camera>
           }
-          
+
           {!this.state.camera && !!this.state.photo &&
             <View style={{ flex: 0.7, alignItems: 'center', justifyContent: 'center' }}>
               <Image
